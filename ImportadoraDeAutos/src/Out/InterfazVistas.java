@@ -10,6 +10,9 @@ import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -173,6 +176,11 @@ public class InterfazVistas extends javax.swing.JFrame {
         jScrollPane5.setViewportView(jTextPane5);
 
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -268,7 +276,7 @@ public class InterfazVistas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 836, Short.MAX_VALUE))
+                        .addComponent(jTabbedPane1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3)
@@ -341,6 +349,17 @@ public class InterfazVistas extends javax.swing.JFrame {
     private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
     jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/verde.png")));    // TODO add your handling code here:
     }//GEN-LAST:event_jLabel3MouseExited
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+       
+            MySQL db = new MySQL();
+            db.MySQLConnect();
+
+            
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
