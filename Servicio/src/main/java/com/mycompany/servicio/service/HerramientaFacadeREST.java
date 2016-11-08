@@ -23,9 +23,10 @@ import javax.ws.rs.core.MediaType;
 /**
  *
  * @author rodrigo
+ * @author LuisMaldonado
  */
 @Stateless
-@Path("com.mycompany.servicio.herramienta")
+@Path("herramienta")
 public class HerramientaFacadeREST extends AbstractFacade<Herramienta> {
 
     @PersistenceContext(unitName = "com.mycompany_Servicio_war_1.0-SNAPSHOTPU")
