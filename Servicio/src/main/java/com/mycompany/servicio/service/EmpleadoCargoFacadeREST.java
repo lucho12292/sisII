@@ -25,9 +25,10 @@ import javax.ws.rs.core.PathSegment;
 /**
  *
  * @author rodrigo
+ * @author LuisMaldonado
  */
 @Stateless
-@Path("com.mycompany.servicio.empleadocargo")
+@Path("empleadocargo")
 public class EmpleadoCargoFacadeREST extends AbstractFacade<EmpleadoCargo> {
 
     @PersistenceContext(unitName = "com.mycompany_Servicio_war_1.0-SNAPSHOTPU")

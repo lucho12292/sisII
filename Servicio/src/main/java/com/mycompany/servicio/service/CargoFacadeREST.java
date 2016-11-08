@@ -23,9 +23,10 @@ import javax.ws.rs.core.MediaType;
 /**
  *
  * @author rodrigo
+ * @author LuisMaldonado
  */
 @Stateless
-@Path("com.mycompany.servicio.cargo")
+@Path("cargo")
 public class CargoFacadeREST extends AbstractFacade<Cargo> {
 
     @PersistenceContext(unitName = "com.mycompany_Servicio_war_1.0-SNAPSHOTPU")

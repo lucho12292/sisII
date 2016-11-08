@@ -17,6 +17,7 @@ import javax.validation.constraints.NotNull;
 /**
  *
  * @author rodrigo
+ * @author LuisMaldonado
  */
 @Embeddable
 public class EmpleadoCargoPK implements Serializable {
