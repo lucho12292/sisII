@@ -6,78 +6,22 @@
 package umss.sis.importadora.modelo;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author rodrigo
  * @author LuisMaldonado
  */
-@Entity
-@Table(name = "Balance")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Balance.findAll", query = "SELECT b FROM Balance b")
-    , @NamedQuery(name = "Balance.findByNroBalance", query = "SELECT b FROM Balance b WHERE b.balancePK.nroBalance = :nroBalance")
-    , @NamedQuery(name = "Balance.findByIdDepartamento", query = "SELECT b FROM Balance b WHERE b.balancePK.idDepartamento = :idDepartamento")
-    , @NamedQuery(name = "Balance.findByIngreso", query = "SELECT b FROM Balance b WHERE b.ingreso = :ingreso")
-    , @NamedQuery(name = "Balance.findByEgreso", query = "SELECT b FROM Balance b WHERE b.egreso = :egreso")
-    , @NamedQuery(name = "Balance.findByDeudas", query = "SELECT b FROM Balance b WHERE b.deudas = :deudas")})
-public class Balance implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected BalancePK balancePK;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "ingreso")
+public class Balance implements Serializable {
+    
+    private int nroBalance;    
+    private int idDepartamento;
     private long ingreso;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "egreso")
     private long egreso;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "deudas")
     private long deudas;
-    @JoinColumn(name = "idDepartamento", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Departamento departamento;
 
     public Balance() {
-    }
-
-    public Balance(BalancePK balancePK) {
-        this.balancePK = balancePK;
-    }
-
-    public Balance(BalancePK balancePK, long ingreso, long egreso, long deudas) {
-        this.balancePK = balancePK;
-        this.ingreso = ingreso;
-        this.egreso = egreso;
-        this.deudas = deudas;
-    }
-
-    public Balance(int nroBalance, int idDepartamento) {
-        this.balancePK = new BalancePK(nroBalance, idDepartamento);
-    }
-
-    public BalancePK getBalancePK() {
-        return balancePK;
-    }
-
-    public void setBalancePK(BalancePK balancePK) {
-        this.balancePK = balancePK;
     }
 
     public long getIngreso() {
@@ -104,29 +48,46 @@ public class Balance implements Serializable {
         this.deudas = deudas;
     }
 
-    public Departamento getDepartamento() {
-        return departamento;
+    public int getNroBalance() {
+        return nroBalance;
     }
 
-    public void setDepartamento(Departamento departamento) {
-        this.departamento = departamento;
+    public void setNroBalance(int nroBalance) {
+        this.nroBalance = nroBalance;
+    }
+
+    public int getIdDepartamento() {
+        return idDepartamento;
+    }
+
+    public void setIdDepartamento(int idDepartamento) {
+        this.idDepartamento = idDepartamento;
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (balancePK != null ? balancePK.hashCode() : 0);
+        int hash = 5;
+        hash = 79 * hash + this.nroBalance;
+        hash = 79 * hash + this.idDepartamento;
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Balance)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Balance other = (Balance) object;
-        if ((this.balancePK == null && other.balancePK != null) || (this.balancePK != null && !this.balancePK.equals(other.balancePK))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Balance other = (Balance) obj;
+        if (this.nroBalance != other.nroBalance) {
+            return false;
+        }
+        if (this.idDepartamento != other.idDepartamento) {
             return false;
         }
         return true;
@@ -134,7 +95,6 @@ public class Balance implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.servicio.Balance[ balancePK=" + balancePK + " ]";
+        return "Balance{" + "nroBalance=" + nroBalance + ", idDepartamento=" + idDepartamento + ", ingreso=" + ingreso + ", egreso=" + egreso + ", deudas=" + deudas + '}';
     }
-    
 }
